@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mugshot | AI Booking Generator</title>
+    <meta name="description" content="Transform photos into realistic police booking records with this brutalist, noir-style mugshot generator.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Special+Elite&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="theme-noir">
+
+    <!-- Noise Texture Overlay -->
+    <div class="noise-overlay"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">Mugshot<span class="blink">_</span></div>
+        <button class="menu-toggle" aria-label="Toggle Navigation">☰</button>
+        <nav>
+            <a href="#hero">INTAKE</a>
+            <a href="#playground">PROCESSING</a>
+            <a href="#how-to-use">PROTOCOL</a>
+            <a href="#gallery">RECORDS</a>
+            <a href="#testimonials">WITNESSES</a>
+            <a href="#faq">SYSTEM_INTEL</a>
+            <!-- Header CTA moved inside nav for mobile layout -->
+            <a href="#playground" class="btn btn-sm btn-header">INITIATE_BOOKING</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-bg-image">
+            <img src="images/hero-bg.jpg" alt="Police Lineup Room">
+        </div>
+        <div class="hero-bg-animation"></div> <!-- Grid Scanner Animation -->
+        
+        <div class="hero-content fade-in-up">
+            <div class="stamp-box">CASE FILE: #8921-X</div>
+            <h1>INITIATE BOOKING SEQUENCE</h1>
+            <p>TRANSFORM CITIZEN IMAGERY INTO OFFICIAL DEPARTMENT RECORDS. COMPLIANCE IS MANDATORY.</p>
+            <div class="hero-actions">
+                <a href="#playground" class="btn btn-primary">SUBMIT PHOTO</a>
+                <a href="#gallery" class="btn btn-secondary">VIEW ARCHIVES</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Playground Section -->
+    <section id="playground" class="playground-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>PROCESSING_TERMINAL</h2>
+                <p>UPLOAD SUBJECT PHOTO FOR IMMEDIATE IDENTIFICATION AND RECORD GENERATION.</p>
+            </div>
+
+            <div class="playground-grid">
+                <!-- Left: Controls -->
+                <div class="control-panel panel">
+                    <div class="panel-header">
+                        <span>STEP 1: EVIDENCE SUBMISSION</span>
+                        <div class="status-light"></div>
+                    </div>
+                    
+                    <div class="upload-zone" id="upload-zone" tabindex="0" role="button" aria-label="Upload evidence photo">
+                        <input type="file" id="file-input" accept="image/*" hidden>
+                        <div class="upload-content">
+                            <div class="icon-folder">📁</div>
+                            <p>DROP FILE OR CLICK TO BROWSE</p>
+                            <span class="meta-text">SUPPORTS: JPG, PNG, WEBP</span>
+                        </div>
+                        <img id="preview-image" class="preview-image hidden" alt="Evidence Preview">
+                        <button id="remove-btn" class="btn-icon hidden" title="Remove Evidence">✕</button>
+                    </div>
+
+                    <div class="panel-actions">
+                        <button id="generate-btn" class="btn btn-primary btn-block" disabled>
+                            GENERATE MUGSHOT
+                        </button>
+                        <button id="reset-btn" class="btn btn-secondary btn-block">
+                            RESET TERMINAL
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right: Result -->
+                <div class="result-panel panel">
+                    <div class="panel-header">
+                        <span>STEP 2: RECORD OUTPUT</span>
+                        <div class="status-indicator">STANDBY</div>
+                    </div>
+
+                    <div class="result-display" id="result-container">
+                        <div class="placeholder-content">
+                            <div class="lock-icon">🔒</div>
+                            <p>AWAITING INPUT DATA...</p>
+                        </div>
+                        <div id="loading-state" class="hidden">
+                            <div class="scanner-line"></div>
+                            <p class="blink">PROCESSING BIOMETRICS...</p>
+                        </div>
+                        <img id="result-final" class="hidden" alt="Mugshot Result">
+                    </div>
+
+                    <div class="panel-actions">
+                        <button id="download-btn" class="btn btn-accent btn-block" disabled>
+                            DOWNLOAD RECORD
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Use Section -->
+    <section id="how-to-use" class="steps-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>OPERATIONAL_PROTOCOL</h2>
+                <p>FOLLOW STANDARD OPERATING PROCEDURES FOR ACCURATE PROCESSING.</p>
+            </div>
+            
+            <div class="steps-grid">
+                <div class="step-card box">
+                    <div class="step-number">01</div>
+                    <h3>IDENTIFY SUBJECT</h3>
+                    <p>Select a clear, front-facing photograph of the suspect. Ensure lighting is adequate for facial recognition algorithms.</p>
+                </div>
+                <div class="step-card box">
+                    <div class="step-number">02</div>
+                    <h3>SYSTEM PROCESSING</h3>
+                    <p>Upload the evidence to the terminal. Our neural networks will apply the booking placard and height chart overlay.</p>
+                </div>
+                <div class="step-card box">
+                    <div class="step-number">03</div>
+                    <h3>ARCHIVE RECORD</h3>
+                    <p>Once processing is complete, download the official mugshot to your local database for permanent filing.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>CRIMINAL_RECORDS</h2>
+                <p>RECENTLY PROCESSED INDIVIDUALS. ACCESS LEVEL: PUBLIC.</p>
+            </div>
+            
+            <!-- Grid matches exact number of available images (3) -->
+            <div class="gallery-grid">
+                <div class="gallery-item card">
+                    <div class="evidence-tag">CASE: 1920-G</div>
+                    <div class="image-wrapper">
+                        <img src="images/gallery-result-1.jpg" alt="1920s Gangster Mugshot">
+                    </div>
+                    <div class="record-meta">
+                        <span>STATUS: DETAINED</span>
+                        <span>ID: 0422</span>
+                    </div>
+                </div>
+                
+                <div class="gallery-item card">
+                    <div class="evidence-tag">CASE: 2077-C</div>
+                    <div class="image-wrapper">
+                        <img src="images/gallery-result-2.jpg" alt="Cyberpunk Mugshot">
+                    </div>
+                    <div class="record-meta">
+                        <span>STATUS: WANTED</span>
+                        <span>ID: 0423</span>
+                    </div>
+                </div>
+                
+                <div class="gallery-item card">
+                    <div class="evidence-tag">CASE: 1899-V</div>
+                    <div class="image-wrapper">
+                        <img src="images/gallery-result-3.jpg" alt="Vintage Mugshot">
+                    </div>
+                    <div class="record-meta">
+                        <span>STATUS: PENDING</span>
+                        <span>ID: 0424</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>OFFICER_REPORTS</h2>
+                <p>TESTIMONY FROM FIELD AGENTS AND PRECINCT CAPTAINS.</p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card box">
+                    <div class="quote-mark">"</div>
+                    <p>"The accuracy of the height charts and lighting simulation is disturbing. It looks exactly like the booking station downtown."</p>
+                    <div class="author-info">
+                        <h4>Det. J. Miller</h4>
+                        <span>Forensics Unit</span>
+                    </div>
+                </div>
+                <div class="testimonial-card box">
+                    <div class="quote-mark">"</div>
+                    <p>"Finally, a tool that captures the raw, gritty reality of the intake process without the need for actual incarceration."</p>
+                    <div class="author-info">
+                        <h4>Sgt. A. Vance</h4>
+                        <span>Precinct 99</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>SYSTEM_INTEL</h2>
+                <p>FREQUENTLY INTERROGATED TOPICS.</p>
+            </div>
+            
+            <div class="accordion">
+                <div class="accordion-item box">
+                    <button class="accordion-header">
+                        IS MY DATA STORED IN THE POLICE DATABASE?
+                        <span class="icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Negative. All images are processed temporarily for the duration of the session and are purged from our servers within 24 hours. No permanent record is created.</p>
+                    </div>
+                </div>
+                <div class="accordion-item box">
+                    <button class="accordion-header">
+                        CAN I USE THESE FOR COMMERCIAL PROJECTS?
+                        <span class="icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Affirmative. The generated images are royalty-free. You retain ownership of the original subject photo, and the applied effect is cleared for use in film, print, or digital media.</p>
+                    </div>
+                </div>
+                <div class="accordion-item box">
+                    <button class="accordion-header">
+                        WHAT FILE FORMATS ARE ADMISSIBLE?
+                        <span class="icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>The system accepts standard JPG, PNG, and WEBP formats. For optimal results, ensure the subject is well-lit and facing forward, similar to passport requirements.</p>
+                    </div>
+                </div>
+                <div class="accordion-item box">
+                    <button class="accordion-header">
+                        DOES THIS WORK ON MOBILE DEVICES?
+                        <span class="icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Yes. The terminal is fully responsive and accessible via mobile browsers, allowing field agents to process booking photos remotely.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>Mugshot</h3>
+                    <p>© 2024 BUREAU OF DIGITAL CORRECTIONS.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#" data-modal-target="privacy">PRIVACY_POLICY</a>
+                    <a href="#" data-modal-target="terms">TERMS_OF_SERVICE</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <div id="privacy-modal" class="modal hidden">
+        <div class="modal-content box">
+            <span class="close-modal" data-modal-close="privacy">&times;</span>
+            <div class="modal-body">
+                <h2>Privacy Policy</h2>
+                <p><strong>Last Updated:</strong> 2024</p>
+                
+                <h4>1. Data Collection</h4>
+                <p>We collect only the minimum data necessary:</p>
+                <ul>
+                  <li>Images you upload for processing (temporarily stored)</li>
+                  <li>Basic usage analytics (non-personal)</li>
+                  <li>Browser type and device information</li>
+                </ul>
+                
+                <h4>2. Image Processing</h4>
+                <p>Your uploaded images are:</p>
+                <ul>
+                  <li>Processed securely on our servers</li>
+                  <li>Automatically deleted within 24 hours</li>
+                  <li>Never shared with third parties</li>
+                  <li>Not used for AI training without consent</li>
+                </ul>
+                
+                <h4>3. Data Security</h4>
+                <p>All data transmission is encrypted using SSL/TLS protocols.</p>
+                
+                <h4>4. Cookies</h4>
+                <p>We use essential cookies only for site functionality.</p>
+                
+                <h4>5. Your Rights</h4>
+                <p>You have the right to request deletion of any stored data.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="terms-modal" class="modal hidden">
+        <div class="modal-content box">
+            <span class="close-modal" data-modal-close="terms">&times;</span>
+            <div class="modal-body">
+                <h2>Terms of Service</h2>
+                <p><strong>Last Updated:</strong> 2024</p>
+                
+                <h4>1. Acceptance of Terms</h4>
+                <p>By using this service, you agree to these Terms.</p>
+                
+                <h4>2. Service Description</h4>
+                <p>This service provides AI-powered image transformation. Provided "as-is" without warranties.</p>
+                
+                <h4>3. Acceptable Use</h4>
+                <p>You agree NOT to upload:</p>
+                <ul>
+                  <li>Illegal or unlawful content</li>
+                  <li>Explicit, pornographic, or obscene material</li>
+                  <li>Content depicting violence or harm</li>
+                  <li>Images you do not have rights to use</li>
+                </ul>
+                
+                <h4>4. Intellectual Property</h4>
+                <p>You retain full ownership of your original images. Generated effects are royalty-free for personal and commercial use.</p>
+                
+                <h4>5. Limitation of Liability</h4>
+                <p>We are not liable for any damages arising from the use of this service.</p>
+                
+                <h4>6. Modifications</h4>
+                <p>We may update these terms at any time. Continued use constitutes acceptance.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
